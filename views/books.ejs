@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library - Browse Books</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📚 Tiny Library</h1>
+      <p>Browse our collection of books</p>
+    </header>
+
+    <main>
+      <div class="books-grid">
+        <% books.forEach(book => { %>
+          <div class="book-card">
+            <h2><%= book.title %></h2>
+            <p class="author">by <%= book.author %></p>
+            <p class="year"><%= book.year %> • <%= book.genre %></p>
+            <p class="description"><%= book.description %></p>
+            <div class="reviews-info">
+              <span><%= book.reviews.length %> review<%= book.reviews.length !== 1 ? 's' : '' %></span>
+              <% if (book.reviews.length > 0) { %>
+                <span class="rating">
+                  ⭐ <%= (book.reviews.reduce((sum, r) => sum + r.rating, 0) / book.reviews.length).toFixed(1) %>
+                </span>
+              <% } %>
+            </div>
+            <a href="/books/<%= book.id %>" class="btn">View Details</a>
+          </div>
+        <% }); %>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

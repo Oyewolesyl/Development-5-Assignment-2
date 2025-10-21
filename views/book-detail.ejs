@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= book.title %> - Library</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="/books" class="back-link">← Back to Library</a>
+      <h1><%= book.title %></h1>
+    </header>
+
+    <main>
+      <div class="book-detail">
+        <div class="book-info">
+          <p class="author">by <%= book.author %></p>
+          <p class="meta"><%= book.year %> • <%= book.genre %></p>
+          <p class="description"><%= book.description %></p>
+        </div>
+
+        <div class="reviews-section">
+          <h2>Reviews (<%= book.reviews.length %>)</h2>
+          
+          <% if (book.reviews.length > 0) { %>
+            <div class="reviews-list">
+              <% book.reviews.forEach(review => { %>
+                <div class="review">
+                  <div class="rating">
+                    <% for(let i = 0; i < review.rating; i++) { %>⭐<% } %>
+                  </div>
+                  <p><%= review.comment %></p>
+                </div>
+              <% }); %>
+            </div>
+          <% } else { %>
+            <p class="no-reviews">No reviews yet. Be the first to review this book!</p>
+          <% } %>
+        </div>
+
+        <div class="review-form">
+          <h3>Write a Review</h3>
+          <form action="/books/<%= book.id %>/review" method="POST">
+            <div class="form-group">
+              <label for="rating">Rating:</label>
+              <select id="rating" name="rating" required>
+                <option value="">Select rating</option>
+                <option value="5">⭐⭐⭐⭐⭐ (5 stars)</option>
+                <option value="4">⭐⭐⭐⭐ (4 stars)</option>
+                <option value="3">⭐⭐⭐ (3 stars)</option>
+                <option value="2">⭐⭐ (2 stars)</option>
+                <option value="1">⭐ (1 star)</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="comment">Your Review:</label>
+              <textarea id="comment" name="comment" rows="4" required placeholder="Share your thoughts about this book..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn">Submit Review</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

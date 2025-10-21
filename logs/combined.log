@@ -1,0 +1,11 @@
+2025-10-20 18:03:23 [INFO]: Starting database initialization...
+2025-10-20 18:03:23 [INFO]: Database connection established successfully
+2025-10-20 18:03:23 [INFO]: Database tables synchronized
+2025-10-20 18:03:23 [INFO]: Created 5 sample books
+2025-10-20 18:03:23 [INFO]: Created 5 sample reviews
+2025-10-20 18:03:32 [INFO]: Database connection established successfully
+2025-10-20 18:03:32 [INFO]: Database synchronized successfully
+2025-10-20 18:03:33 [INFO]: Server running on http://localhost:3000
+2025-10-20 18:03:37 [INFO]: GET /
+2025-10-20 18:03:38 [INFO]: GET /books
+2025-10-20 18:03:44 [INFO]: GET /books/2
